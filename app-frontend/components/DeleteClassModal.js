@@ -1,31 +1,30 @@
-import React, {useContext, useState} from 'react';
-import {Alert, Modal, StyleSheet, Text, Pressable, View, TouchableOpacity} from 'react-native';
+import React from 'react';
+import { Modal, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
-const DeleteClassModal = ({modalVisible, onClose, onDelete}) => {
-
+export const DeleteClassModal = ({ modalVisible, onClose, onDelete }) => {
 
   return (
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={onClose}>
+    <Modal
+      animationType="slide"
+      transparent={true}
+      visible={modalVisible}
+      onRequestClose={onClose}>
 
-        <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-            <Text style={styles.modalText}>Remove class from schedule?</Text>
-            <View style={styles.icons}>
-            <TouchableOpacity  onPress={onClose}>
-            <AntDesign name="close" size={24} color="black" />
+      <View>
+        <View className="bg-white m-5 rounded-2xl p-9 items-center shadow-md">
+          <Text className="rounded-3xl p-2">Remove class from schedule?</Text>
+          <View className="flex-row justify-between items-center w-full px-4">
+            <TouchableOpacity onPress={onClose}>
+              <AntDesign name="close" size={24} color="red" />
             </TouchableOpacity>
-            <TouchableOpacity  onPress={onDelete}>
-            <AntDesign name="check" size={24} color="black" />
+            <TouchableOpacity onPress={onDelete}>
+              <AntDesign name="check" size={24} color="green" />
             </TouchableOpacity>
-            </View>
           </View>
         </View>
-      </Modal>
+      </View>
+    </Modal>
   );
 };
 
@@ -45,31 +44,4 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
   },
-  button: {
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
-  },
-  buttonOpen: {
-    backgroundColor: '#F194FF',
-  },
-  buttonClose: {
-    backgroundColor: '#2196F3',
-  },
-  textStyle: {
-    color: 'white',
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-  modalText: {
-    marginBottom: 15,
-    textAlign: 'center',
-  },
-  icons: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  }
 });
-
-export default DeleteClassModal;

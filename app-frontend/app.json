@@ -13,9 +13,17 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "bundleIdentifier": "com.example.app",
+      "supportsTablet": true,
+      "config": {
+        "usesNonExemptEncryption": false
+      }
     },
     "android": {
+      "package": "com.example.app",
+      "config": {
+        "googleServicesFile": "./google-services.json"
+      },
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
@@ -27,7 +35,12 @@
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
+     [ "expo-notifications",
+      {
+        "icon": "./assets/images/notification-icon.png",
+        "color": "#000000"
+      }]
     ],
     "experiments": {
       "typedRoutes": true

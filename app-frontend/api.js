@@ -1,12 +1,12 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://192.168.1.9:3000',
+  baseURL: 'ip',
 });
 
-export const getClasses = async () => {
+export const getClass = async () => {
   try {
-    const response = await api.get('/classdetails');
+    const response = await api.get('/classes');
     return response.data;
   } catch (error) {
     console.error('Error fetching classes:', error);
@@ -16,7 +16,7 @@ export const getClasses = async () => {
 
 export const addClass = async (classData) => {
   try {
-    const response = await api.post('/classdetails', classData);
+    const response = await api.post('/classes', classData);
     return response.data;
   } catch (error) {
     console.error('Error adding class:', error);
@@ -26,7 +26,7 @@ export const addClass = async (classData) => {
 
 export const updateClass = async (classData) => {
   try {
-    const response = await api.patch('/classdetails', classData);
+    const response = await api.patch('/classes', classData);
     return response.data;
   } catch (error) {
     console.error('Error updating class:', error);
@@ -36,7 +36,7 @@ export const updateClass = async (classData) => {
 
 export const deleteClass = async (id) => {
   try {
-    const response = await api.delete(`/classdetails/${id}`);
+    const response = await api.delete(`/classes/${id}`);
     return response.data;
   } catch (error) {
     console.error('Error deleting class at api:', error);

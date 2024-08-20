@@ -1,55 +1,29 @@
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
-import React from 'react'
-import Colors from '../assets/Colors';
-import { useNavigation } from '@react-navigation/native'; 
+import { View, Text, TouchableOpacity } from 'react-native';
+import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 export default function ClassDetailsButton({ classItem }) {
   const navigation = useNavigation();
 
-  console.log('ClassItem:', classItem);
   return (
-    <View>
-      <TouchableOpacity style={styles.btn}
-       onPress={() => navigation.navigate('ClassDetails', { classItem })}>
-        <View style={styles.title}> 
-            <Text style={styles.titleText}>{classItem.title}</Text>
-            </View>   
-        <View style={styles.description}>  
-        <Text style={styles.descriptionText}>{classItem.description}</Text>
-        </View>
-        <View style={styles.time}>  
-        <Text style={styles.timeText}>{classItem.time}:</Text>
-        </View>
-        <View style={styles.room}>  
-        <Text style={styles.roomText}>{classItem.room}:</Text>
-        </View>
+    <View className="items-center my-2">
+      <TouchableOpacity
+        className="bg-skyBlue px-4 py-3 rounded-3xl min-w-full items-center justify-center"
+        onPress={() => navigation.navigate('ClassDetails', { classItem })}
+      >
+        <Text className="text-white text-lg font-bold text-center mb-1">
+          {classItem.title}
+        </Text>
+        <Text className="text-white text-sm text-center mb-1">
+          {classItem.description}
+        </Text>
+        <Text className="text-white text-xs text-center">
+          Time: {classItem.time}
+        </Text>
+        <Text className="text-white text-xs text-center">
+          Room: {classItem.room}
+        </Text>
       </TouchableOpacity>
     </View>
-  )
+  );
 }
-
-const styles = StyleSheet.create({
-    btn:{
-      backgroundColor: Colors.SILVER,
-      width: 300,
-      height: 100,
-      borderRadius: 24,
-      marginTop: 20,
-      textAlign:'center'
-    },
-    title:{
-        justifyContent: 'center', // Centers text vertically
-        alignItems: 'center', // Centers text horizontally
-    },
-    titleText:{
-      color: '#fff',
-      fontSize: 12,
-    },
-    description:{
-
-    },
-    descriptionText:{
-
-    }
-  });
-  

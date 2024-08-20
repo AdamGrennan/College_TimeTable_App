@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 
 export default function TimePicker({value, onChange}) {
@@ -16,9 +16,12 @@ export default function TimePicker({value, onChange}) {
   };
 
   return (
-    <View style={styles.container}>
-      <TouchableOpacity onPress={showTimePicker} style={styles.btn}>
-      <Text style ={styles.btn}>Selected Time: {value}</Text>
+    <View>
+      <TouchableOpacity 
+        onPress={showTimePicker} 
+        className="bg-white border border-SILVER p-2 mb-5"
+      >
+        <Text className="text-black text-base">{value}</Text>
       </TouchableOpacity>
       <DateTimePickerModal
         isVisible={isVisible}
@@ -28,16 +31,4 @@ export default function TimePicker({value, onChange}) {
       />
     </View>
   );
-}
-
-const styles = StyleSheet.create({
-  btn: {
-    backgroundColor: '#007BFF',
-    padding: 15,
-    borderRadius: 5,
-  },
-  btnText: {
-    color: '#fff',
-    fontSize: 16,
-  },
-});
+};

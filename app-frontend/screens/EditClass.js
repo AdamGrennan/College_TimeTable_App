@@ -1,7 +1,7 @@
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity } from 'react-native'
 import React, { useContext, useState, useEffect } from 'react'
-import Colors from '../assets/Colors';
 import TimePicker from '../components/TimePicker';
+import { DayDropDown } from '../components/DayDropDown';
 import { ClassContext } from '../context/ClassContext';
 import { useNavigation, useRoute } from '@react-navigation/native';
 
@@ -32,44 +32,28 @@ export default function EditClass( {} ) {
     const classDetails = {id, title, description, time, day, room};
     try {
         await updateClasses(classDetails);
-        navigation.navigate('ClassDetails');
+        navigation.navigate('ClassDetails', {classItem : classDetails});
     } catch (error) {
         console.error('Error updating class:', error);
     }
 };
 
     return (
-         <View style={styles.container}>
-      <Text>Class Name</Text>
-      <TextInput style={styles.input} value={title} onChangeText={setTitle}></TextInput>
-      <Text>Description</Text>
-      <TextInput style={styles.input} value={description} onChangeText={setDescription}></TextInput>
-      <Text>Time</Text>
+         <View className="flex-1 p-5 bg-gray-100">
+      <Text className="font-bold">Class Name</Text>
+      <TextInput className="bg-white border border-SILVER p-2 mb-5" value={title} onChangeText={setTitle}></TextInput>
+      <Text className="font-bold">Description</Text>
+      <TextInput className="bg-white border border-SILVER p-2 mb-5"  value={description} onChangeText={setDescription}></TextInput>
+      <Text className="font-bold">Time</Text>
       <TimePicker value={time} onChange={setTime}/>
-      <Text>Room</Text>
-      <TextInput style={styles.input} value={room} onChangeText={setRoom}></TextInput>
-      <TouchableOpacity style={styles.btn} onPress ={(handleUpdate)}>
-        <Text>Add Class</Text>
+      <Text className="font-bold">Day</Text>
+      <DayDropDown value={day} onChange={setDay}/>
+      <Text className="font-bold">Room</Text>
+      <TextInput className="bg-white border border-SILVER p-2 mb-5" value={room} onChangeText={setRoom}></TextInput>
+      <TouchableOpacity className="bg-springGreen p-2 rounded-3xl items-center" onPress ={(handleUpdate)}>
+        <Text className="text-black text-base font-bold">Save Details</Text>
       </TouchableOpacity>
     </View>
-      )
-    }
+      );
+    };
     
-    const styles = StyleSheet.create({
-      container: {
-        flex: 1,
-        backgroundColor: '#fff',
-      },
-      input:{
-        backgroundColor: Colors.SILVER,
-      },
-      btn:{
-        backgroundColor: '#0000FF',
-          width: 200,
-          height: 50,
-          borderRadius: 24,
-          justifyContent: 'center', 
-          alignItems: 'center', 
-          textAlign:'center'
-      }
-    });

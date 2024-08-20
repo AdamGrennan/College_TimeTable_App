@@ -3,7 +3,7 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import Home from '../screens/Home';
-import AddClass from '../screens/AddClass'; 
+import AddClass from '../screens/AddClass';
 import ClassDetails from '../screens/ClassDetails';
 import EditClass from '../screens/EditClass';
 
